@@ -1,0 +1,24 @@
+{
+  "name": "ts-workshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agileactors/ts-workshop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agileactors/ts-workshop/issues"
+  },
+  "homepage": "https://github.com/agileactors/ts-workshop#readme",
+  "devDependencies": {
+    "prettier": "^2.8.8",
+    "typescript": "^5.2.2"
+  }
+}
