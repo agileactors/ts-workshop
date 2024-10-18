@@ -4,7 +4,6 @@
 // Although they often lead to similar outcomes, they possess distinct features and advantages,
 // making them suitable for different use cases.
 
-
 // -> Advantages of using Interfaces
 
 // 1. Declaration Merging:
@@ -22,8 +21,8 @@ interface IAnimal {
 // Merged Interface usage
 const animal: IAnimal = {
   species: 'dog',
-  breed: 'Labrador'
-}
+  breed: 'Labrador',
+};
 
 // On the other hand, types do not support declaration merging. Each type is unique and cannot be redeclared.
 
@@ -31,17 +30,16 @@ type Animal = {
   species: string;
 };
 
-// This will result in an error: "Duplicate identifier 'Animal'."   
+// This will result in an error: "Duplicate identifier 'Animal'."
 // type Animal = {
 //   breed: string;
 // };
-
 
 // 2. Extensibility:
 // Interfaces can be easily extended using the 'extends' keyword, facilitating the creation of
 // complex, hierarchical data structures.
 
-interface Insurance  {
+interface Insurance {
   policyNumber: string | number;
   coverageType: string;
 }
@@ -58,7 +56,7 @@ const insuredCar: Car = {
   model: 'Corolla',
   year: 2015,
   policyNumber: 'INS12345',
-  coverageType: 'Comprehensive'
+  coverageType: 'Comprehensive',
 };
 
 // 3. Classes in TypeScript can implement interfaces, which enforces that the class adheres to the structure
@@ -74,7 +72,6 @@ class Vehicle implements IVehicle {
   }
 }
 
-
 // -> Advantages of using Types
 
 // 1. Combining Types with Intersections:
@@ -83,7 +80,7 @@ class Vehicle implements IVehicle {
 type Measurements = {
   height: number;
   width: number;
-}
+};
 
 // Intersection Type example using the '&' operator
 type Suitcase = Measurements & { length: number };
@@ -97,7 +94,6 @@ type StringOrNumber = string | number;
 
 // Mapped Type example
 type ReadOnly<T> = { readonly [P in keyof T]: T[P] };
-
 
 // Conclusion:
 // Use interfaces:

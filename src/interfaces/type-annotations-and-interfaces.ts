@@ -1,6 +1,6 @@
 // Interfaces and improving code readability
 
-// Long type annotation is shown as inline declaration of type 
+// Long type annotation is shown as inline declaration of type
 
 const customerData: {
   id: number;

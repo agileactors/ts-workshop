@@ -13,10 +13,10 @@ type TransactionRecord = {
 
 type ImmutableTransaction = Readonly<TransactionRecord>;
 
-const transaction: ImmutableTransaction = { 
-  transactionId: "TR12345", 
-  amount: 250.00, 
-  date: new Date('2023-12-15'), 
+const transaction: ImmutableTransaction = {
+  transactionId: 'TR12345',
+  amount: 250.0,
+  date: new Date('2023-12-15'),
 };
 // In this example, the properties of the transaction cannot be changed after being set.
 
