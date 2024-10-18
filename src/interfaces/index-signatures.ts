@@ -13,5 +13,5 @@ interface IBooleanProperties {
 const userPermissions: IBooleanProperties = {
   canEdit: true,
   canDelete: false,
-  canView: true
+  canView: true,
 };

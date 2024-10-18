@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prettier:check": "prettier --check \"./src/**/*.{js,jsx,ts,tsx,json,md}\"",
+    "prettier:fix": "prettier --write \"./src/**/*.+(js|jsx|ts|tsx|json|css|md)\"",
     "typecheck": "tsc --noEmit"
   },
   "repository": {

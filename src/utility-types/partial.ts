@@ -15,5 +15,9 @@ type Book = {
 
 type PartialBook = Partial<Book>;
 
-const bookWithPartialInfo: PartialBook = { title: 'Example book', author: 'John Doe', yearPublished: 2018 };
+const bookWithPartialInfo: PartialBook = {
+  title: 'Example book',
+  author: 'John Doe',
+  yearPublished: 2018,
+};
 // In this example, only the title, author and yearPublished are provided, other properties are optional.

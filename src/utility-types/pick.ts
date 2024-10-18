@@ -17,5 +17,9 @@ type Restaurant = {
 // New type, selecting 'name', 'location' and 'capacity' properties from Restaurant
 type SocialEvent = Pick<Restaurant, 'name' | 'location' | 'capacity'>;
 
-const upcomingEvent: SocialEvent = { name: "Christmas party", location: "Horizon Resort", capacity: 300 };
+const upcomingEvent: SocialEvent = {
+  name: 'Christmas party',
+  location: 'Horizon Resort',
+  capacity: 300,
+};
 // In this example, only the name, location and capacity properties can be included.
