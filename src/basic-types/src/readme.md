@@ -7,3 +7,5 @@ Use an array of questions objects "questions" to store: category, question, corr
 - Create a checkAnswer function that will accept a question and user answer and will return boolean if it is correct
 
 use it like: checkAnswer(questions[0], false);
+
+just a test
