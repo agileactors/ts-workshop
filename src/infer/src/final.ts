@@ -1,30 +1,53 @@
 // Solution Exercise 1
 
-// Create a type alias `ExtractResponse<T>` that extracts the return type of a function using `infer`.
+// Create a type `MovieInfo<T>` that extracts the genre from strings like:
+// `'Movie: Inception (Genre: Sci-Fi)'` and `'Movie: Titanic (Genre: Romance)'`.
 
-type ExtractResponse<T> = T extends (...args: any[]) => Promise<infer R>
-  ? R
+type MovieInfo<T> = T extends `Movie: ${string} (Genre: ${infer Genre})`
+  ? Genre
   : never;
 
-// Define a function `fetchData` that returns a `Promise<{ data: string; success: boolean }>`
-// and use `ExtractResponse` to infer its return type.
+// Use `MovieInfo` to infer the genre for these two examples.
 
-const fetchData = (): Promise<{ data: string; success: boolean }> => {
-  return Promise.resolve({ data: 'Hello', success: true });
-};
+type Genre1 = MovieInfo<'Movie: Inception (Genre: Sci-Fi)'>; // TypeScript infers: 'Sci-Fi'
+type Genre2 = MovieInfo<'Movie: Titanic (Genre: Romance)'>; // TypeScript infers: 'Romance'
 
-type ResponseType = ExtractResponse<typeof fetchData>;
+// Solution Exercise 2
 
-// Create a type alias `ExtractArrayItem<T>` that extracts the element type from an array using `infer`.
+// Given the `movieRoutes` object, use `infer` to extract:
 
-type ExtractArrayItem<T> = T extends Array<infer U> ? U : never;
+const movieRoutes = {
+  'watched:get': '/watched/get',
+  'watched:rate': '/watched/rate/:movieId',
+  'favorites:get': '/favorites/get',
+  'favorites:add': '/favorites/add/:movieId',
+  'wishlist:get': '/wishlist/get',
+  'wishlist:add': '/wishlist/add/:movieId',
+} as const;
 
-// Use `ExtractArrayItem` to extract the type of elements from a `movies` array.
+// The list of movie categories (like `watched`, `favorites`, or `wishlist`) into a type called `MovieCategories`.
 
-const movies = ['Inception', 'Interstellar', 'Dune'];
+type MovieCategories =
+  keyof typeof movieRoutes extends `${infer Category}:${string}`
+    ? Category
+    : never;
 
-type MovieType = ExtractArrayItem<typeof movies>;
+// The list of actions for `watched` routes (like `get` or `rate`) into a type called `WatchedActions`.
 
-// Log the inferred type of the first movie and the return type of `fetchData()`.
-console.log(typeof movies[0]); // Expected output: "string"
-console.log(typeof fetchData()); // Expected output: "object" (Promise)
+type WatchedActions = keyof typeof movieRoutes extends `${infer Action}`
+  ? Action extends `watched:${infer Action}`
+    ? Action
+    : never
+  : never;
+
+// The list of actions for `wishlist` routes (like `add`) into a type called `WishlistActions`.
+
+type WishlistActions = keyof typeof movieRoutes extends `${infer Action}`
+  ? Action extends `wishlist:${infer Action}`
+    ? Action
+    : never
+  : never;
+
+const category: MovieCategories = 'watched'; // Valid
+const watchedAction: WatchedActions = 'rate'; // Valid
+const wishlistAction: WishlistActions = 'add'; // Valid

@@ -1,16 +1,27 @@
 // Exercise 1
 
-// Create a type alias `ExtractResponse<T>` that extracts the return type of a function using `infer`.
+// Create a type `MovieInfo<T>` that extracts the genre from strings like:
+// `'Movie: Inception (Genre: Sci-Fi)'` and `'Movie: Titanic (Genre: Romance)'`.
 
-type ExtractResponse<T> = T extends (...args: any[]) => Promise<infer R>
-  ? R
+type MovieInfo<T> = T extends `Movie: ${string} (Genre: ${infer Genre})`
+  ? Genre
   : never;
 
-// Define a function `fetchData` that returns a `Promise<{ data: string; success: boolean }>`
-// and use `ExtractResponse` to infer its return type.
+// Use `MovieInfo` to infer the genre for these two examples.
 
-// Create a type alias `ExtractArrayItem<T>` that extracts the element type from an array using `infer`.
+// Exercise 2
 
-// Use `ExtractArrayItem` to extract the type of elements from a `movies` array.
+// Given the `movieRoutes` object, use `infer` to extract:
 
-// Log the inferred type of the first movie and the return type of `fetchData()`.
+const movieRoutes = {
+  'watched:get': '/watched/get',
+  'watched:rate': '/watched/rate/:movieId',
+  'favorites:get': '/favorites/get',
+  'favorites:add': '/favorites/add/:movieId',
+  'wishlist:get': '/wishlist/get',
+  'wishlist:add': '/wishlist/add/:movieId',
+} as const;
+
+// The list of movie categories (like `watched`, `favorites`, or `wishlist`) into a type called `MovieCategories`.
+// The list of actions for `watched` routes (like `get` or `rate`) into a type called `WatchedActions`.
+// The list of actions for `wishlist` routes (like `add`) into a type called `WishlistActions`.
