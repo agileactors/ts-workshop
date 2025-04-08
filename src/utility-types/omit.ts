@@ -8,12 +8,12 @@
 
 // Syntax: Omit<Type, Keys>
 
-interface Person {
+type Person = {
   name: string;
   age: number;
   address: string;
   email: string;
-}
+};
 
 type PersonWithoutAddress = Omit<Person, 'address'>;
 
