@@ -1,15 +1,15 @@
 // TypeScript utility types exercise solution.
 
 // Task 1: Partial
-interface IBankAccount {
+type BankAccount = {
   id: string;
   fullName: string;
   balance: number;
   isActive: boolean;
   creationDate?: Date;
-}
+};
 
-type PartialBankAccount = Partial<IBankAccount>;
+type PartialBankAccount = Partial<BankAccount>;
 
 const bankAccount: PartialBankAccount = {
   id: 'acc123',
@@ -18,7 +18,7 @@ const bankAccount: PartialBankAccount = {
 };
 
 // Task 2: Pick
-type CustomerId = Pick<IBankAccount, 'id' | 'fullName'>;
+type CustomerId = Pick<BankAccount, 'id' | 'fullName'>;
 
 const customer: CustomerId = {
   id: 'acc234',
@@ -26,7 +26,7 @@ const customer: CustomerId = {
 };
 
 // Task 3: Readonly
-type ReadonlyBankAccount = Readonly<IBankAccount>;
+type ReadonlyBankAccount = Readonly<BankAccount>;
 
 const readonlyBankAccount: ReadonlyBankAccount = {
   id: 'acc345',
@@ -39,7 +39,7 @@ const readonlyBankAccount: ReadonlyBankAccount = {
 // readonlyBankAccount.balance = 8000; // Error: Cannot assign to 'balance' because it is a read-only property
 
 // Task 4: Record
-type BankAccountRecord = Record<string, IBankAccount>;
+type BankAccountRecord = Record<string, BankAccount>;
 
 const bankAccountsList: BankAccountRecord = {
   account1: {
@@ -59,7 +59,7 @@ const bankAccountsList: BankAccountRecord = {
 };
 
 // Task 5: Required
-type FullBankAccountProfile = Required<IBankAccount>;
+type FullBankAccountProfile = Required<BankAccount>;
 
 const completeBankAccount: FullBankAccountProfile = {
   id: 'acc789',

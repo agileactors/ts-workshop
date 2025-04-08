@@ -6,14 +6,14 @@
 
 // Syntax: Required<Type>
 
-interface ICity {
+type City = {
   name: string;
   country: string;
   population: number;
   hasMetro?: boolean;
-}
+};
 
-type CompleteCityInfo = Required<ICity>;
+type CompleteCityInfo = Required<City>;
 
 const city: CompleteCityInfo = {
   name: 'Tokyo',

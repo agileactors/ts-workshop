@@ -8,14 +8,14 @@
 
 type MovieTitle = 'Inception' | 'Titanic' | 'Interstellar';
 
-interface IMovieInfo {
+type MovieInfo = {
   genre: string;
   duration: number;
   releaseDate: Date;
-}
+};
 
 // Creating a Record type for a collection of movies with their titles as keys
-const movies: Record<MovieTitle, IMovieInfo> = {
+const movies: Record<MovieTitle, MovieInfo> = {
   Inception: {
     genre: 'Science Fiction',
     duration: 148,
